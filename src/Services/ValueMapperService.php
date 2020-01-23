@@ -1,7 +1,6 @@
 <?php namespace professionalweb\IntegrationHub\ValueMapper\Services;
 
 use professionalweb\IntegrationHub\ValueMapper\Models\Value;
-
 use professionalweb\IntegrationHub\ValueMapper\Traits\UseValueMapRepository;
 use professionalweb\IntegrationHub\ValueMapper\Interfaces\Repositories\ValueMapRepository;
 use professionalweb\IntegrationHub\ValueMapper\Interfaces\ValueMapperService as IValueMapperService;
