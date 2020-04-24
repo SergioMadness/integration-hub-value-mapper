@@ -8,7 +8,7 @@ class NewEventListener
 {
     public function handle(EventToProcess $eventToProcess)
     {
-        if ($eventToProcess->getProcessOptions()->getSubsystemId() === SetValueMapSubsystem::SUBSYSTEM_ID) {
+        if ($eventToProcess->getProcessOptions()->getSubsystemId() === SetValueMapSubsystem::SUBSYSTEM_ID_SET) {
             return app(SetValueMapSubsystem::class);
         }
 

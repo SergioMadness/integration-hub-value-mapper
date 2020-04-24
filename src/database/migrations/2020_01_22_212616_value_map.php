@@ -3,9 +3,8 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use professionalweb\IntegrationHub\IntegrationHub\Models\User;
 
-class Users extends Migration
+class ValueMap extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +12,7 @@ class Users extends Migration
      * @return void
      * @throws Exception
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('value_mapping_value', function (Blueprint $table) {
             $table->string('id', 32)->primary();
@@ -35,7 +34,7 @@ class Users extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::drop('value_mapping_values');
         Schema::drop('value_mapping');

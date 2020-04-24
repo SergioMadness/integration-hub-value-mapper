@@ -19,6 +19,8 @@ class ValueMapperProvider extends ServiceProvider
 
     public function register(): void
     {
+        $this->app->register(EventServiceProvider::class);
+
         $this->app->singleton(IValueMapRepository::class, ValueMapRepository::class);
         $this->app->singleton(IValueMapperService::class, ValueMapperService::class);
 

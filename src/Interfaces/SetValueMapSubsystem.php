@@ -8,5 +8,5 @@ use professionalweb\IntegrationHub\IntegrationHubCommon\Interfaces\Services\Subs
  */
 interface SetValueMapSubsystem extends Subsystem
 {
-    public const SUBSYSTEM_ID = 'value-mapper';
+    public const SUBSYSTEM_ID_SET = 'value-mapper';
 }

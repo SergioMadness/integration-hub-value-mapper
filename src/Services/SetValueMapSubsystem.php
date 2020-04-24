@@ -32,7 +32,7 @@ class SetValueMapSubsystem implements ISetValueMapSubsystem
      *
      * @return Subsystem
      */
-    public function setProcessOptions(ProcessOptions $options): self
+    public function setProcessOptions(ProcessOptions $options): Subsystem
     {
         $this->processOptions = $options;
 
