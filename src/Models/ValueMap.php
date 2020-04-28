@@ -1,7 +1,7 @@
 <?php namespace professionalweb\IntegrationHub\ValueMapper\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * Mapping
@@ -23,6 +23,8 @@ class ValueMap extends Model
 
     public $incrementing = false;
 
+    public $timestamps = false;
+
     public $fillable = [
         'first_id',
         'second_id',
@@ -32,20 +34,32 @@ class ValueMap extends Model
     /**
      * Get first key
      *
-     * @return HasOne
+     * @return BelongsTo
      */
-    public function firstKey(): HasOne
+    public function firstKey(): BelongsTo
     {
-        return $this->hasOne(Value::class, 'first_id');
+        return $this->belongsTo(Value::class, 'first_id');
     }
 
     /**
      * Get second key
      *
-     * @return HasOne
+     * @return BelongsTo
      */
-    public function secondKey(): HasOne
+    public function secondKey(): BelongsTo
     {
-        return $this->hasOne(Value::class, 'second_id');
+        return $this->belongsTo(Value::class, 'second_id');
+    }
+
+    /**
+     * Get value
+     *
+     * @param $key
+     *
+     * @return Value
+     */
+    public function getValue($key): Value
+    {
+        return md5($key) === $this->second_id ? $this->firstKey : $this->secondKey;
     }
 }

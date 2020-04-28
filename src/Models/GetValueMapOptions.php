@@ -29,7 +29,12 @@ class GetValueMapOptions implements SubsystemOptions
      */
     public function getOptions(): array
     {
-        return [];
+        return [
+            'namespace' => [
+                'name' => 'Namespace',
+                'type' => 'string',
+            ],
+        ];
     }
 
     /**

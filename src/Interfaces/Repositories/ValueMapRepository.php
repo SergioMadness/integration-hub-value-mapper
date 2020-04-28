@@ -30,5 +30,5 @@ interface ValueMapRepository extends Repository
      *
      * @return ValueMap
      */
-    public function getMap(string $namespace, $key): ValueMap;
+    public function getMap(string $namespace, $key): ?ValueMap;
 }

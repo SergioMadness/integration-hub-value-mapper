@@ -1,5 +1,6 @@
 <?php namespace professionalweb\IntegrationHub\ValueMapper\Repositories;
 
+use Illuminate\Database\Eloquent\Builder;
 use professionalweb\IntegrationHub\ValueMapper\Models\Value;
 use professionalweb\IntegrationHub\ValueMapper\Models\ValueMap;
 use professionalweb\IntegrationHub\IntegrationHubCommon\Interfaces\Models\Model;
@@ -28,10 +29,14 @@ class ValueMapRepository extends BaseRepository implements IValueMapRepository
      */
     public function createMap(string $namespace, $key1, $key2): ValueMap
     {
-        $first = Value::query()->create([
+        $first = Value::query()->firstOrCreate([
+            'id' => md5($key1),
+        ], [
             'value' => $key1,
         ]);
-        $second = Value::query()->create([
+        $second = Value::query()->firstOrCreate([
+            'id' => md5($key2),
+        ], [
             'value' => $key2,
         ]);
 
@@ -56,5 +61,25 @@ class ValueMapRepository extends BaseRepository implements IValueMapRepository
         }
 
         return null;
+    }
+
+    /**
+     * Get map
+     *
+     * @param string $namespace
+     * @param        $key
+     *
+     * @return ValueMap
+     */
+    public function getMap(string $namespace, $key): ?ValueMap
+    {
+        return ValueMap::query()
+            ->where('namespace', $namespace)
+            ->where(function (Builder $query) use ($key) {
+                $query
+                    ->where('first_id', md5($key))
+                    ->orWhere('second_id', md5($key));
+            })
+            ->first();
     }
 }

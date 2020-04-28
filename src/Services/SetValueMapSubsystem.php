@@ -63,7 +63,7 @@ class SetValueMapSubsystem implements ISetValueMapSubsystem
      */
     public function process(EventData $eventData): EventData
     {
-        $this->getValueMapperService()->put($eventData->get('namespace'), $eventData->get('key'), $eventData->get('value'));
+        $this->getValueMapperService()->put($this->getProcessOptions()->getOptions()['namespace'] ?? 'default', $eventData->get('key'), $eventData->get('value'));
 
         return $eventData;
     }

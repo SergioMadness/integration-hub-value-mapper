@@ -9,11 +9,15 @@ class NewEventListener
     public function handle(EventToProcess $eventToProcess)
     {
         if ($eventToProcess->getProcessOptions()->getSubsystemId() === SetValueMapSubsystem::SUBSYSTEM_ID_SET) {
-            return app(SetValueMapSubsystem::class)->process($eventToProcess->getEventData());
+            return app(SetValueMapSubsystem::class)
+                ->setProcessOptions($eventToProcess->getProcessOptions())
+                ->process($eventToProcess->getEventData());
         }
 
         if ($eventToProcess->getProcessOptions()->getSubsystemId() === GetValueMapSubsystem::SUBSYSTEM_ID) {
-            return app(GetValueMapSubsystem::class)->process($eventToProcess->getEventData());
+            return app(GetValueMapSubsystem::class)
+                ->setProcessOptions($eventToProcess->getProcessOptions())
+                ->process($eventToProcess->getEventData());
         }
     }
 }

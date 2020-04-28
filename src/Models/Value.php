@@ -17,6 +17,8 @@ class Value extends Model
 
     public $incrementing = false;
 
+    public $timestamps = false;
+
     protected $fillable = ['value'];
 
     public static function boot()
