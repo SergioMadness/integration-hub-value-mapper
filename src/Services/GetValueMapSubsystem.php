@@ -32,7 +32,7 @@ class GetValueMapSubsystem extends SetValueMapSubsystem implements IGetValueMapS
     public function process(EventData $eventData): EventData
     {
         $data = $eventData->getData();
-        $data['value'] = $this->getValueMapperService()->get($eventData->get('key'));
+        $data['value'] = $this->getValueMapperService()->get($eventData->get('namespace'), $eventData->get('key'));
         $eventData->setData($data);
 
         return $eventData;

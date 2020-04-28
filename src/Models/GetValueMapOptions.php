@@ -17,7 +17,8 @@ class GetValueMapOptions implements SubsystemOptions
     public function getAvailableFields(): array
     {
         return [
-            'key' => 'Key',
+            'namespace' => 'Namespace',
+            'key'       => 'Key',
         ];
     }
 

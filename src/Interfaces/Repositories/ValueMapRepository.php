@@ -14,10 +14,21 @@ interface ValueMapRepository extends Repository
     /**
      * Create map
      *
-     * @param $key1
-     * @param $key2
+     * @param string $namespace
+     * @param        $key1
+     * @param        $key2
      *
      * @return ValueMap
      */
-    public function createMap($key1, $key2): ValueMap;
+    public function createMap(string $namespace, $key1, $key2): ValueMap;
+
+    /**
+     * Get map
+     *
+     * @param string $namespace
+     * @param        $key
+     *
+     * @return ValueMap
+     */
+    public function getMap(string $namespace, $key): ValueMap;
 }

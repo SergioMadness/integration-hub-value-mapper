@@ -23,6 +23,12 @@ class ValueMap extends Model
 
     public $incrementing = false;
 
+    public $fillable = [
+        'first_id',
+        'second_id',
+        'namespace',
+    ];
+
     /**
      * Get first key
      *

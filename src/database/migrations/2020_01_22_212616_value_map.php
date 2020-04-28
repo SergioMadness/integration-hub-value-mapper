@@ -22,8 +22,9 @@ class ValueMap extends Migration
         Schema::create('value_mapping', function (Blueprint $table) {
             $table->string('first_id');
             $table->string('second_id');
+            $table->string('namespace');
 
-            $table->unique(['first_id', 'second_id']);
+            $table->unique(['namespace', 'first_id', 'second_id']);
             $table->foreign('first_id')->on('value_mapping_value')->references('id')->onDelete('cascade');
             $table->foreign('second_id')->on('value_mapping_value')->references('id')->onDelete('cascade');
         });
@@ -36,7 +37,7 @@ class ValueMap extends Migration
      */
     public function down(): void
     {
-        Schema::drop('value_mapping_values');
         Schema::drop('value_mapping');
+        Schema::drop('value_mapping_value');
     }
 }

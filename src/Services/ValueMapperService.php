@@ -30,14 +30,17 @@ class ValueMapperService implements IValueMapperService
     }
 
     /**
-     * @param $key
+     * Get item
+     *
+     * @param string $namespace
+     * @param        $key
      *
      * @return mixed
      */
-    public function get($key)
+    public function get(string $namespace, $key)
     {
         /** @var Value $model */
-        $model = $this->getValueMapRepository()->model($key);
+        $model = $this->getValueMapRepository()->getMap($namespace, $key);
         if ($model !== null) {
             return $model->value;
         }

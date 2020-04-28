@@ -17,8 +17,9 @@ class SetValueMapOptions implements SubsystemOptions
     public function getAvailableFields(): array
     {
         return [
-            'key'   => 'Key',
-            'value' => 'Value',
+            'namespace' => 'Namespace',
+            'key'       => 'Key',
+            'value'     => 'Value',
         ];
     }
 

@@ -1,8 +1,8 @@
 <?php namespace professionalweb\IntegrationHub\ValueMapper\Repositories;
 
-use professionalweb\IntegrationHub\IntegrationHubCommon\Interfaces\Models\Model;
 use professionalweb\IntegrationHub\ValueMapper\Models\Value;
 use professionalweb\IntegrationHub\ValueMapper\Models\ValueMap;
+use professionalweb\IntegrationHub\IntegrationHubCommon\Interfaces\Models\Model;
 use professionalweb\IntegrationHub\IntegrationHubDB\Repositories\BaseRepository;
 use professionalweb\IntegrationHub\ValueMapper\Interfaces\Repositories\ValueMapRepository as IValueMapRepository;
 
@@ -20,12 +20,13 @@ class ValueMapRepository extends BaseRepository implements IValueMapRepository
     /**
      * Create map
      *
-     * @param $key1
-     * @param $key2
+     * @param string $namespace
+     * @param        $key1
+     * @param        $key2
      *
      * @return ValueMap
      */
-    public function createMap($key1, $key2): ValueMap
+    public function createMap(string $namespace, $key1, $key2): ValueMap
     {
         $first = Value::query()->create([
             'value' => $key1,
@@ -37,6 +38,7 @@ class ValueMapRepository extends BaseRepository implements IValueMapRepository
         return ValueMap::query()->updateOrCreate([
             'first_id'  => $first->id,
             'second_id' => $second->id,
+            'namespace' => $namespace,
         ]);
     }
 
