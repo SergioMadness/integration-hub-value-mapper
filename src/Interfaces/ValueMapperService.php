@@ -21,7 +21,7 @@ interface ValueMapperService
      * @param string $namespace
      * @param        $key
      *
-     * @return mixed
+     * @return array
      */
-    public function get(string $namespace, $key);
+    public function get(string $namespace, $key): array;
 }
