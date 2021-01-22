@@ -24,4 +24,15 @@ interface ValueMapperService
      * @return mixed
      */
     public function get(string $namespace, $key);
+
+    /**
+     * Check pair exists
+     *
+     * @param string $namespace
+     * @param        $item1
+     * @param        $item2
+     *
+     * @return bool
+     */
+    public function exists(string $namespace, $item1, $item2): bool;
 }

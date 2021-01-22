@@ -82,4 +82,32 @@ class ValueMapRepository extends BaseRepository implements IValueMapRepository
             })
             ->first();
     }
+
+    /**
+     * Check pair exists
+     *
+     * @param string $namespace
+     * @param        $item1
+     * @param        $item2
+     *
+     * @return bool
+     */
+    public function exists(string $namespace, $item1, $item2): bool
+    {
+        return ValueMap::query()
+            ->where('namespace', $namespace)
+            ->where(function (Builder $query) use ($item1, $item2) {
+                $query->where(function (Builder $query) use ($item1, $item2) {
+                    $query
+                        ->where('first_id', md5($item1))
+                        ->where('second_id', md5($item2));
+                })->orWhere(function (Builder $query) use ($item1, $item2) {
+                    $query->where(function (Builder $query) use ($item1, $item2) {
+                        $query
+                            ->where('first_id', md5($item2))
+                            ->where('second_id', md5($item1));
+                    });
+                });
+            })->exists();
+    }
 }
