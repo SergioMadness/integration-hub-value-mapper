@@ -2,6 +2,7 @@
 
 use professionalweb\IntegrationHub\ValueMapper\Models\PairExistsOptions;
 use professionalweb\IntegrationHub\IntegrationHubCommon\Interfaces\EventData;
+use professionalweb\IntegrationHub\ValueMapper\Interfaces\ValueMapperService;
 use professionalweb\IntegrationHub\IntegrationHubCommon\Interfaces\Services\Subsystem;
 use professionalweb\IntegrationHub\IntegrationHubCommon\Interfaces\Models\ProcessOptions;
 use professionalweb\IntegrationHub\IntegrationHubCommon\Interfaces\Models\SubsystemOptions;
@@ -16,6 +17,14 @@ class PairExistsSubsystem implements IPairExistsSubsystem
     /** @var ProcessOptions */
     private $processOptions;
 
+    /** @var ValueMapperService */
+    private $valueMapperService;
+
+    public function __construct(ValueMapperService $valueMapperService)
+    {
+        $this->setValueMapperService($valueMapperService);
+    }
+
     /**
      * Set options with values
      *
@@ -28,6 +37,11 @@ class PairExistsSubsystem implements IPairExistsSubsystem
         $this->processOptions = $options;
 
         return $this;
+    }
+
+    public function getProcessOptions(): ProcessOptions
+    {
+        return $this->processOptions;
     }
 
     /**
@@ -49,6 +63,30 @@ class PairExistsSubsystem implements IPairExistsSubsystem
      */
     public function process(EventData $eventData): EventData
     {
-        // TODO: Implement process() method.
+        $data = $eventData->getData();
+        $data['exists'] = $this->getValueMapperService()->exists($this->getProcessOptions()->getOptions()['namespace'] ?? 'default', $eventData->get('key'), $eventData->get('value'));
+        $eventData->setData($data);
+
+        return $eventData;
+    }
+
+    /**
+     * @return ValueMapperService
+     */
+    public function getValueMapperService(): ValueMapperService
+    {
+        return $this->valueMapperService;
+    }
+
+    /**
+     * @param ValueMapperService $valueMapperService
+     *
+     * @return $this
+     */
+    public function setValueMapperService(ValueMapperService $valueMapperService): self
+    {
+        $this->valueMapperService = $valueMapperService;
+
+        return $this;
     }
 }
