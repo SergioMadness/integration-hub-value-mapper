@@ -27,7 +27,9 @@ class ValueMapperService implements IValueMapperService
      */
     public function put(string $namespace, $key1, $key2): void
     {
-        $this->getValueMapRepository()->createMap($namespace, $key1, $key2);
+        if (!$this->exists($namespace, $key1, $key2)) {
+            $this->getValueMapRepository()->createMap($namespace, $key1, $key2);
+        }
     }
 
     /**
