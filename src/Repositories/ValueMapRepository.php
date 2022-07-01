@@ -1,18 +1,20 @@
 <?php namespace professionalweb\IntegrationHub\ValueMapper\Repositories;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use professionalweb\IntegrationHub\ValueMapper\Models\Value;
+use professionalweb\lms\Common\Abstractions\EntityRepository;
 use professionalweb\IntegrationHub\ValueMapper\Models\ValueMap;
-use professionalweb\IntegrationHub\IntegrationHubCommon\Interfaces\Models\Model;
-use professionalweb\IntegrationHub\IntegrationHubDB\Repositories\BaseRepository;
 use professionalweb\IntegrationHub\ValueMapper\Interfaces\Repositories\ValueMapRepository as IValueMapRepository;
 
 /**
  * Repository for value map
  * @package professionalweb\IntegrationHub\ValueMapper\Repositories
  */
-class ValueMapRepository extends BaseRepository implements IValueMapRepository
+class ValueMapRepository extends EntityRepository implements IValueMapRepository
 {
+    public bool $noNeedWebsite = true;
+
     public function __construct()
     {
         $this->setModelClass(ValueMap::class);

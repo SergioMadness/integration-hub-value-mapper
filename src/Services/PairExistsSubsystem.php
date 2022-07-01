@@ -15,10 +15,10 @@ use professionalweb\IntegrationHub\ValueMapper\Interfaces\PairExistsSubsystem as
 class PairExistsSubsystem implements IPairExistsSubsystem
 {
     /** @var ProcessOptions */
-    private $processOptions;
+    private ProcessOptions $processOptions;
 
     /** @var ValueMapperService */
-    private $valueMapperService;
+    private ValueMapperService $valueMapperService;
 
     public function __construct(ValueMapperService $valueMapperService)
     {

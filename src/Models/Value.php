@@ -21,11 +21,11 @@ class Value extends Model
 
     protected $fillable = ['value'];
 
-    public static function boot()
+    public static function boot(): void
     {
         parent::boot();
 
-        static::creating(function (Value $model) {
+        static::creating(static function (Value $model) {
             if (empty($model->id)) {
                 $model->id = md5($model->value);
             }

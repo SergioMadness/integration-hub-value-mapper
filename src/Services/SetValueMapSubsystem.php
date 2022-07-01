@@ -15,10 +15,10 @@ use professionalweb\IntegrationHub\ValueMapper\Interfaces\SetValueMapSubsystem a
 class SetValueMapSubsystem implements ISetValueMapSubsystem
 {
     /** @var ProcessOptions */
-    private $processOptions;
+    private ProcessOptions $processOptions;
 
     /** @var ValueMapperService */
-    private $valueMapperService;
+    private ValueMapperService $valueMapperService;
 
     public function __construct(ValueMapperService $valueMapperService)
     {

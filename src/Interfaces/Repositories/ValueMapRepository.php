@@ -1,7 +1,7 @@
 <?php namespace professionalweb\IntegrationHub\ValueMapper\Interfaces\Repositories;
 
 use professionalweb\IntegrationHub\ValueMapper\Models\ValueMap;
-use professionalweb\IntegrationHub\IntegrationHubCommon\Interfaces\Repositories\Repository;
+use professionalweb\lms\Common\Interfaces\Repositories\Repository;
 
 /**
  * Interface for value map repository

@@ -19,14 +19,20 @@ class ValueMap extends Migration
             $table->string('value');
         });
 
-        Schema::create('value_mapping', function (Blueprint $table) {
+        Schema::create('value_mapping', static function (Blueprint $table) {
+            $table->integer('company_id');
             $table->string('first_id');
             $table->string('second_id');
             $table->string('namespace');
 
-            $table->unique(['namespace', 'first_id', 'second_id']);
+            $table->unique(['company_id', 'namespace', 'first_id', 'second_id']);
             $table->foreign('first_id')->on('value_mapping_value')->references('id')->onDelete('cascade');
             $table->foreign('second_id')->on('value_mapping_value')->references('id')->onDelete('cascade');
+
+            $table->foreign('company_id')
+                ->on('company')
+                ->references('id')
+                ->onDelete('cascade');
         });
     }
 

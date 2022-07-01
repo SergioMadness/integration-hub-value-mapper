@@ -9,7 +9,7 @@ use professionalweb\IntegrationHub\ValueMapper\Interfaces\Repositories\ValueMapR
 trait UseValueMapRepository
 {
     /** @var ValueMapRepository */
-    private $valueMapRepository;
+    private ValueMapRepository $valueMapRepository;
 
     /**
      * @return ValueMapRepository
