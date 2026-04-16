@@ -1,4 +1,8 @@
-<?php namespace professionalweb\IntegrationHub\ValueMapper\Interfaces\Repositories;
+<?php
+
+declare(strict_types=1);
+
+namespace professionalweb\IntegrationHub\ValueMapper\Interfaces\Repositories;
 
 use professionalweb\IntegrationHub\ValueMapper\Models\ValueMap;
 use professionalweb\lms\Common\Interfaces\Repositories\Repository;

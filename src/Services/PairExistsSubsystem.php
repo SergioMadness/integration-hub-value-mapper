@@ -1,4 +1,8 @@
-<?php namespace professionalweb\IntegrationHub\ValueMapper\Services;
+<?php
+
+declare(strict_types=1);
+
+namespace professionalweb\IntegrationHub\ValueMapper\Services;
 
 use professionalweb\IntegrationHub\ValueMapper\Models\PairExistsOptions;
 use professionalweb\IntegrationHub\IntegrationHubCommon\Interfaces\EventData;
@@ -23,25 +27,6 @@ class PairExistsSubsystem implements IPairExistsSubsystem
     public function __construct(ValueMapperService $valueMapperService)
     {
         $this->setValueMapperService($valueMapperService);
-    }
-
-    /**
-     * Set options with values
-     *
-     * @param ProcessOptions $options
-     *
-     * @return Subsystem
-     */
-    public function setProcessOptions(ProcessOptions $options): Subsystem
-    {
-        $this->processOptions = $options;
-
-        return $this;
-    }
-
-    public function getProcessOptions(): ProcessOptions
-    {
-        return $this->processOptions;
     }
 
     /**
@@ -86,6 +71,25 @@ class PairExistsSubsystem implements IPairExistsSubsystem
     public function setValueMapperService(ValueMapperService $valueMapperService): self
     {
         $this->valueMapperService = $valueMapperService;
+
+        return $this;
+    }
+
+    public function getProcessOptions(): ProcessOptions
+    {
+        return $this->processOptions;
+    }
+
+    /**
+     * Set options with values
+     *
+     * @param ProcessOptions $options
+     *
+     * @return Subsystem
+     */
+    public function setProcessOptions(ProcessOptions $options): Subsystem
+    {
+        $this->processOptions = $options;
 
         return $this;
     }

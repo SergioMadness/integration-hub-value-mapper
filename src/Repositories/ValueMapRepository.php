@@ -1,4 +1,8 @@
-<?php namespace professionalweb\IntegrationHub\ValueMapper\Repositories;
+<?php
+
+declare(strict_types=1);
+
+namespace professionalweb\IntegrationHub\ValueMapper\Repositories;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
@@ -43,7 +47,7 @@ class ValueMapRepository extends EntityRepository implements IValueMapRepository
         ]);
 
         return ValueMap::query()->updateOrCreate([
-            'first_id'  => $first->id,
+            'first_id' => $first->id,
             'second_id' => $second->id,
             'namespace' => $namespace,
         ]);
@@ -77,7 +81,7 @@ class ValueMapRepository extends EntityRepository implements IValueMapRepository
     {
         return ValueMap::query()
             ->where('namespace', $namespace)
-            ->where(function (Builder $query) use ($key) {
+            ->where(static function (Builder $query) use ($key): void {
                 $query
                     ->where('first_id', md5($key))
                     ->orWhere('second_id', md5($key));
@@ -98,13 +102,13 @@ class ValueMapRepository extends EntityRepository implements IValueMapRepository
     {
         return ValueMap::query()
             ->where('namespace', $namespace)
-            ->where(function (Builder $query) use ($item1, $item2) {
-                $query->where(function (Builder $query) use ($item1, $item2) {
+            ->where(static function (Builder $query) use ($item1, $item2): void {
+                $query->where(static function (Builder $query) use ($item1, $item2): void {
                     $query
                         ->where('first_id', md5($item1))
                         ->where('second_id', md5($item2));
-                })->orWhere(function (Builder $query) use ($item1, $item2) {
-                    $query->where(function (Builder $query) use ($item1, $item2) {
+                })->orWhere(static function (Builder $query) use ($item1, $item2): void {
+                    $query->where(static function (Builder $query) use ($item1, $item2): void {
                         $query
                             ->where('first_id', md5($item2))
                             ->where('second_id', md5($item1));

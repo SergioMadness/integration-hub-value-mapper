@@ -1,4 +1,8 @@
-<?php namespace professionalweb\IntegrationHub\ValueMapper\Models;
+<?php
+
+declare(strict_types=1);
+
+namespace professionalweb\IntegrationHub\ValueMapper\Models;
 
 use professionalweb\IntegrationHub\IntegrationHubCommon\Interfaces\Models\SubsystemOptions;
 
@@ -18,7 +22,7 @@ class GetValueMapOptions implements SubsystemOptions
     {
         return [
             'namespace' => 'Namespace',
-            'key'       => 'Key',
+            'key' => 'Key',
         ];
     }
 

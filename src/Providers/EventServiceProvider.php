@@ -1,4 +1,8 @@
-<?php namespace professionalweb\IntegrationHub\ValueMapper\Providers;
+<?php
+
+declare(strict_types=1);
+
+namespace professionalweb\IntegrationHub\ValueMapper\Providers;
 
 use professionalweb\IntegrationHub\ValueMapper\Listeners\NewEventListener;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;

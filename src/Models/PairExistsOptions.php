@@ -1,4 +1,8 @@
-<?php namespace professionalweb\IntegrationHub\ValueMapper\Models;
+<?php
+
+declare(strict_types=1);
+
+namespace professionalweb\IntegrationHub\ValueMapper\Models;
 
 use professionalweb\IntegrationHub\IntegrationHubCommon\Interfaces\Models\SubsystemOptions;
 
@@ -17,8 +21,8 @@ class PairExistsOptions implements SubsystemOptions
     {
         return [
             'namespace' => 'Namespace',
-            'key'       => 'Key',
-            'value'     => 'Value',
+            'key' => 'Key',
+            'value' => 'Value',
         ];
     }
 
@@ -30,7 +34,7 @@ class PairExistsOptions implements SubsystemOptions
     public function getOptions(): array
     {
         return [
-            'namespace'  => [
+            'namespace' => [
                 'name' => 'Namespace',
                 'type' => 'string',
             ],

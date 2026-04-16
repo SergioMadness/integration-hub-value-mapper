@@ -1,4 +1,8 @@
-<?php namespace professionalweb\IntegrationHub\ValueMapper\Models;
+<?php
+
+declare(strict_types=1);
+
+namespace professionalweb\IntegrationHub\ValueMapper\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -11,14 +15,10 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Value extends Model
 {
-    protected $table = 'value_mapping_value';
-
-    protected $keyType = 'string';
-
     public $incrementing = false;
-
     public $timestamps = false;
-
+    protected $table = 'value_mapping_value';
+    protected $keyType = 'string';
     protected $fillable = ['value'];
 
     public static function boot(): void

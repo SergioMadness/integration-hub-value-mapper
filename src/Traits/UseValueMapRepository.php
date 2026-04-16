@@ -1,4 +1,8 @@
-<?php namespace professionalweb\IntegrationHub\ValueMapper\Traits;
+<?php
+
+declare(strict_types=1);
+
+namespace professionalweb\IntegrationHub\ValueMapper\Traits;
 
 use professionalweb\IntegrationHub\ValueMapper\Interfaces\Repositories\ValueMapRepository;
 
