@@ -18,8 +18,6 @@ class GetValueMapSubsystem extends SetValueMapSubsystem implements IGetValueMapS
 
     /**
      * Get available options
-     *
-     * @return SubsystemOptions
      */
     public function getAvailableOptions(): SubsystemOptions
     {
@@ -28,10 +26,6 @@ class GetValueMapSubsystem extends SetValueMapSubsystem implements IGetValueMapS
 
     /**
      * Process event data
-     *
-     * @param EventData $eventData
-     *
-     * @return EventData
      */
     public function process(EventData $eventData): EventData
     {

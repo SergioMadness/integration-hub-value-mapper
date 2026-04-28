@@ -32,8 +32,6 @@ class ValueMap extends Model
 
     /**
      * Get first key
-     *
-     * @return BelongsTo
      */
     public function firstKey(): BelongsTo
     {
@@ -42,8 +40,6 @@ class ValueMap extends Model
 
     /**
      * Get second key
-     *
-     * @return BelongsTo
      */
     public function secondKey(): BelongsTo
     {
@@ -54,8 +50,6 @@ class ValueMap extends Model
      * Get value
      *
      * @param $key
-     *
-     * @return Value
      */
     public function getValue($key): Value
     {

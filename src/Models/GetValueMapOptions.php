@@ -15,8 +15,6 @@ class GetValueMapOptions implements SubsystemOptions
 
     /**
      * Get available fields for mapping
-     *
-     * @return array
      */
     public function getAvailableFields(): array
     {
@@ -28,8 +26,6 @@ class GetValueMapOptions implements SubsystemOptions
 
     /**
      * Get service settings
-     *
-     * @return array
      */
     public function getOptions(): array
     {
@@ -43,8 +39,6 @@ class GetValueMapOptions implements SubsystemOptions
 
     /**
      * Get array fields, that subsystem generates
-     *
-     * @return array
      */
     public function getAvailableOutFields(): array
     {

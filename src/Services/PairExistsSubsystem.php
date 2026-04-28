@@ -18,10 +18,8 @@ use professionalweb\IntegrationHub\ValueMapper\Interfaces\PairExistsSubsystem as
  */
 class PairExistsSubsystem implements IPairExistsSubsystem
 {
-    /** @var ProcessOptions */
     private ProcessOptions $processOptions;
 
-    /** @var ValueMapperService */
     private ValueMapperService $valueMapperService;
 
     public function __construct(ValueMapperService $valueMapperService)
@@ -31,8 +29,6 @@ class PairExistsSubsystem implements IPairExistsSubsystem
 
     /**
      * Get available options
-     *
-     * @return SubsystemOptions
      */
     public function getAvailableOptions(): SubsystemOptions
     {
@@ -41,10 +37,6 @@ class PairExistsSubsystem implements IPairExistsSubsystem
 
     /**
      * Process event data
-     *
-     * @param EventData $eventData
-     *
-     * @return EventData
      */
     public function process(EventData $eventData): EventData
     {
@@ -55,17 +47,12 @@ class PairExistsSubsystem implements IPairExistsSubsystem
         return $eventData;
     }
 
-    /**
-     * @return ValueMapperService
-     */
     public function getValueMapperService(): ValueMapperService
     {
         return $this->valueMapperService;
     }
 
     /**
-     * @param ValueMapperService $valueMapperService
-     *
      * @return $this
      */
     public function setValueMapperService(ValueMapperService $valueMapperService): self
@@ -82,10 +69,6 @@ class PairExistsSubsystem implements IPairExistsSubsystem
 
     /**
      * Set options with values
-     *
-     * @param ProcessOptions $options
-     *
-     * @return Subsystem
      */
     public function setProcessOptions(ProcessOptions $options): Subsystem
     {

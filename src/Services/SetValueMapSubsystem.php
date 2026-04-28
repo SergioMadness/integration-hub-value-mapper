@@ -18,10 +18,8 @@ use professionalweb\IntegrationHub\ValueMapper\Interfaces\SetValueMapSubsystem a
  */
 class SetValueMapSubsystem implements ISetValueMapSubsystem
 {
-    /** @var ProcessOptions */
     private ProcessOptions $processOptions;
 
-    /** @var ValueMapperService */
     private ValueMapperService $valueMapperService;
 
     public function __construct(ValueMapperService $valueMapperService)
@@ -31,8 +29,6 @@ class SetValueMapSubsystem implements ISetValueMapSubsystem
 
     /**
      * Get available options
-     *
-     * @return SubsystemOptions
      */
     public function getAvailableOptions(): SubsystemOptions
     {
@@ -41,10 +37,6 @@ class SetValueMapSubsystem implements ISetValueMapSubsystem
 
     /**
      * Process event data
-     *
-     * @param EventData $eventData
-     *
-     * @return EventData
      */
     public function process(EventData $eventData): EventData
     {
@@ -53,17 +45,12 @@ class SetValueMapSubsystem implements ISetValueMapSubsystem
         return $eventData;
     }
 
-    /**
-     * @return ValueMapperService
-     */
     public function getValueMapperService(): ValueMapperService
     {
         return $this->valueMapperService;
     }
 
     /**
-     * @param ValueMapperService $valueMapperService
-     *
      * @return $this
      */
     public function setValueMapperService(ValueMapperService $valueMapperService): self
@@ -80,10 +67,6 @@ class SetValueMapSubsystem implements ISetValueMapSubsystem
 
     /**
      * Set options with values
-     *
-     * @param ProcessOptions $options
-     *
-     * @return Subsystem
      */
     public function setProcessOptions(ProcessOptions $options): Subsystem
     {

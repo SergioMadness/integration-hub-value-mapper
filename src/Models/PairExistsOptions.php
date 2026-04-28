@@ -14,8 +14,6 @@ class PairExistsOptions implements SubsystemOptions
 {
     /**
      * Get available fields for mapping
-     *
-     * @return array
      */
     public function getAvailableFields(): array
     {
@@ -28,8 +26,6 @@ class PairExistsOptions implements SubsystemOptions
 
     /**
      * Get service settings
-     *
-     * @return array
      */
     public function getOptions(): array
     {
@@ -43,8 +39,6 @@ class PairExistsOptions implements SubsystemOptions
 
     /**
      * Get array fields, that subsystem generates
-     *
-     * @return array
      */
     public function getAvailableOutFields(): array
     {

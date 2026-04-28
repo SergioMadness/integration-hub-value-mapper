@@ -12,20 +12,14 @@ use professionalweb\IntegrationHub\ValueMapper\Interfaces\Repositories\ValueMapR
  */
 trait UseValueMapRepository
 {
-    /** @var ValueMapRepository */
     private ValueMapRepository $valueMapRepository;
 
-    /**
-     * @return ValueMapRepository
-     */
     public function getValueMapRepository(): ValueMapRepository
     {
         return $this->valueMapRepository;
     }
 
     /**
-     * @param ValueMapRepository $valueMapRepository
-     *
      * @return $this
      */
     public function setValueMapRepository(ValueMapRepository $valueMapRepository): self
