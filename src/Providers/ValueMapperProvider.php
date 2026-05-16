@@ -1,4 +1,8 @@
-<?php namespace professionalweb\IntegrationHub\ValueMapper\Providers;
+<?php
+
+declare(strict_types=1);
+
+namespace professionalweb\IntegrationHub\ValueMapper\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use professionalweb\IntegrationHub\ValueMapper\Models\PairExistsOptions;
@@ -21,7 +25,7 @@ class ValueMapperProvider extends ServiceProvider
     public function boot(): void
     {
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
-        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'IntegrationHubValueMapper');
+        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'IntegrationHubValueMapper');
 
         $this->app->booted(static function () {
             /** @var SubsystemPool $pool */

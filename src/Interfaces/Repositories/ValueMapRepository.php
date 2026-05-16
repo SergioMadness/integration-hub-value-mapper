@@ -1,4 +1,8 @@
-<?php namespace professionalweb\IntegrationHub\ValueMapper\Interfaces\Repositories;
+<?php
+
+declare(strict_types=1);
+
+namespace professionalweb\IntegrationHub\ValueMapper\Interfaces\Repositories;
 
 use professionalweb\IntegrationHub\ValueMapper\Models\ValueMap;
 use professionalweb\lms\Common\Interfaces\Repositories\Repository;
@@ -14,18 +18,14 @@ interface ValueMapRepository extends Repository
     /**
      * Create map
      *
-     * @param string $namespace
      * @param        $key1
      * @param        $key2
-     *
-     * @return ValueMap
      */
     public function createMap(string $namespace, $key1, $key2): ValueMap;
 
     /**
      * Get map
      *
-     * @param string $namespace
      * @param        $key
      *
      * @return ValueMap
@@ -35,11 +35,8 @@ interface ValueMapRepository extends Repository
     /**
      * Check pair exists
      *
-     * @param string $namespace
      * @param        $item1
      * @param        $item2
-     *
-     * @return bool
      */
     public function exists(string $namespace, $item1, $item2): bool;
 }

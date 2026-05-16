@@ -1,4 +1,8 @@
-<?php namespace professionalweb\IntegrationHub\ValueMapper\Services;
+<?php
+
+declare(strict_types=1);
+
+namespace professionalweb\IntegrationHub\ValueMapper\Services;
 
 use professionalweb\IntegrationHub\ValueMapper\Models\PairExistsOptions;
 use professionalweb\IntegrationHub\IntegrationHubCommon\Interfaces\EventData;
@@ -14,10 +18,8 @@ use professionalweb\IntegrationHub\ValueMapper\Interfaces\PairExistsSubsystem as
  */
 class PairExistsSubsystem implements IPairExistsSubsystem
 {
-    /** @var ProcessOptions */
     private ProcessOptions $processOptions;
 
-    /** @var ValueMapperService */
     private ValueMapperService $valueMapperService;
 
     public function __construct(ValueMapperService $valueMapperService)
@@ -26,28 +28,7 @@ class PairExistsSubsystem implements IPairExistsSubsystem
     }
 
     /**
-     * Set options with values
-     *
-     * @param ProcessOptions $options
-     *
-     * @return Subsystem
-     */
-    public function setProcessOptions(ProcessOptions $options): Subsystem
-    {
-        $this->processOptions = $options;
-
-        return $this;
-    }
-
-    public function getProcessOptions(): ProcessOptions
-    {
-        return $this->processOptions;
-    }
-
-    /**
      * Get available options
-     *
-     * @return SubsystemOptions
      */
     public function getAvailableOptions(): SubsystemOptions
     {
@@ -56,10 +37,6 @@ class PairExistsSubsystem implements IPairExistsSubsystem
 
     /**
      * Process event data
-     *
-     * @param EventData $eventData
-     *
-     * @return EventData
      */
     public function process(EventData $eventData): EventData
     {
@@ -70,22 +47,32 @@ class PairExistsSubsystem implements IPairExistsSubsystem
         return $eventData;
     }
 
-    /**
-     * @return ValueMapperService
-     */
     public function getValueMapperService(): ValueMapperService
     {
         return $this->valueMapperService;
     }
 
     /**
-     * @param ValueMapperService $valueMapperService
-     *
      * @return $this
      */
     public function setValueMapperService(ValueMapperService $valueMapperService): self
     {
         $this->valueMapperService = $valueMapperService;
+
+        return $this;
+    }
+
+    public function getProcessOptions(): ProcessOptions
+    {
+        return $this->processOptions;
+    }
+
+    /**
+     * Set options with values
+     */
+    public function setProcessOptions(ProcessOptions $options): Subsystem
+    {
+        $this->processOptions = $options;
 
         return $this;
     }

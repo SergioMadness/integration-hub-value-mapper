@@ -1,4 +1,8 @@
-<?php namespace professionalweb\IntegrationHub\ValueMapper\Models;
+<?php
+
+declare(strict_types=1);
+
+namespace professionalweb\IntegrationHub\ValueMapper\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -10,31 +14,24 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string $first_id
  * @property string $second_id
  *
- * @property Value  $firstKey
- * @property Value  $secondKey
+ * @property Value $firstKey
+ * @property Value $secondKey
  */
 class ValueMap extends Model
 {
-    protected $table = 'value_mapping';
-
-    protected $primaryKey = null;
-
-    protected $keyType = null;
-
     public $incrementing = false;
-
     public $timestamps = false;
-
     public $fillable = [
         'first_id',
         'second_id',
         'namespace',
     ];
+    protected $table = 'value_mapping';
+    protected $primaryKey = null;
+    protected $keyType = null;
 
     /**
      * Get first key
-     *
-     * @return BelongsTo
      */
     public function firstKey(): BelongsTo
     {
@@ -43,8 +40,6 @@ class ValueMap extends Model
 
     /**
      * Get second key
-     *
-     * @return BelongsTo
      */
     public function secondKey(): BelongsTo
     {
@@ -55,8 +50,6 @@ class ValueMap extends Model
      * Get value
      *
      * @param $key
-     *
-     * @return Value
      */
     public function getValue($key): Value
     {

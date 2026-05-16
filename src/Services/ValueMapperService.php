@@ -1,4 +1,8 @@
-<?php namespace professionalweb\IntegrationHub\ValueMapper\Services;
+<?php
+
+declare(strict_types=1);
+
+namespace professionalweb\IntegrationHub\ValueMapper\Services;
 
 use professionalweb\IntegrationHub\ValueMapper\Models\ValueMap;
 use professionalweb\IntegrationHub\ValueMapper\Traits\UseValueMapRepository;
@@ -21,7 +25,6 @@ class ValueMapperService implements IValueMapperService
     /**
      * Set mapping
      *
-     * @param string $namespace
      * @param        $key1
      * @param        $key2
      */
@@ -33,12 +36,20 @@ class ValueMapperService implements IValueMapperService
     }
 
     /**
+     * Check pair exists
+     *
+     * @param        $item1
+     * @param        $item2
+     */
+    public function exists(string $namespace, $item1, $item2): bool
+    {
+        return $this->getValueMapRepository()->exists($namespace, $item1, $item2);
+    }
+
+    /**
      * Get item
      *
-     * @param string $namespace
      * @param        $key
-     *
-     * @return array
      */
     public function get(string $namespace, $key): array
     {
@@ -46,25 +57,11 @@ class ValueMapperService implements IValueMapperService
         $model = $this->getValueMapRepository()->getMap($namespace, $key);
         if ($model !== null) {
             return [
-                'key'   => $model->firstKey->value,
+                'key' => $model->firstKey->value,
                 'value' => $model->secondKey->value,
             ];
         }
 
         return [];
-    }
-
-    /**
-     * Check pair exists
-     *
-     * @param string $namespace
-     * @param        $item1
-     * @param        $item2
-     *
-     * @return bool
-     */
-    public function exists(string $namespace, $item1, $item2): bool
-    {
-        return $this->getValueMapRepository()->exists($namespace, $item1, $item2);
     }
 }

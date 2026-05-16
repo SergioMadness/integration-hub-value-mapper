@@ -1,4 +1,8 @@
-<?php namespace professionalweb\IntegrationHub\ValueMapper\Traits;
+<?php
+
+declare(strict_types=1);
+
+namespace professionalweb\IntegrationHub\ValueMapper\Traits;
 
 use professionalweb\IntegrationHub\ValueMapper\Interfaces\Repositories\ValueMapRepository;
 
@@ -8,20 +12,14 @@ use professionalweb\IntegrationHub\ValueMapper\Interfaces\Repositories\ValueMapR
  */
 trait UseValueMapRepository
 {
-    /** @var ValueMapRepository */
     private ValueMapRepository $valueMapRepository;
 
-    /**
-     * @return ValueMapRepository
-     */
     public function getValueMapRepository(): ValueMapRepository
     {
         return $this->valueMapRepository;
     }
 
     /**
-     * @param ValueMapRepository $valueMapRepository
-     *
      * @return $this
      */
     public function setValueMapRepository(ValueMapRepository $valueMapRepository): self

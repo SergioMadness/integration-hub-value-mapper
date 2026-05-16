@@ -1,4 +1,8 @@
-<?php namespace professionalweb\IntegrationHub\ValueMapper\Listeners;
+<?php
+
+declare(strict_types=1);
+
+namespace professionalweb\IntegrationHub\ValueMapper\Listeners;
 
 use professionalweb\IntegrationHub\ValueMapper\Interfaces\PairExistsSubsystem;
 use professionalweb\IntegrationHub\ValueMapper\Interfaces\GetValueMapSubsystem;

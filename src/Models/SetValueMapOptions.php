@@ -1,4 +1,8 @@
-<?php namespace professionalweb\IntegrationHub\ValueMapper\Models;
+<?php
+
+declare(strict_types=1);
+
+namespace professionalweb\IntegrationHub\ValueMapper\Models;
 
 use professionalweb\IntegrationHub\IntegrationHubCommon\Interfaces\Models\SubsystemOptions;
 
@@ -11,27 +15,23 @@ class SetValueMapOptions implements SubsystemOptions
 
     /**
      * Get available fields for mapping
-     *
-     * @return array
      */
     public function getAvailableFields(): array
     {
         return [
             'namespace' => 'Namespace',
-            'key'       => 'Key',
-            'value'     => 'Value',
+            'key' => 'Key',
+            'value' => 'Value',
         ];
     }
 
     /**
      * Get service settings
-     *
-     * @return array
      */
     public function getOptions(): array
     {
         return [
-            'namespace'  => [
+            'namespace' => [
                 'name' => 'Namespace',
                 'type' => 'string',
             ],
@@ -40,8 +40,6 @@ class SetValueMapOptions implements SubsystemOptions
 
     /**
      * Get array fields, that subsystem generates
-     *
-     * @return array
      */
     public function getAvailableOutFields(): array
     {

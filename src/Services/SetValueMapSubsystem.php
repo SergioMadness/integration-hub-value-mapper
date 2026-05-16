@@ -1,4 +1,8 @@
-<?php namespace professionalweb\IntegrationHub\ValueMapper\Services;
+<?php
+
+declare(strict_types=1);
+
+namespace professionalweb\IntegrationHub\ValueMapper\Services;
 
 use professionalweb\IntegrationHub\ValueMapper\Models\SetValueMapOptions;
 use professionalweb\IntegrationHub\IntegrationHubCommon\Interfaces\EventData;
@@ -14,10 +18,8 @@ use professionalweb\IntegrationHub\ValueMapper\Interfaces\SetValueMapSubsystem a
  */
 class SetValueMapSubsystem implements ISetValueMapSubsystem
 {
-    /** @var ProcessOptions */
     private ProcessOptions $processOptions;
 
-    /** @var ValueMapperService */
     private ValueMapperService $valueMapperService;
 
     public function __construct(ValueMapperService $valueMapperService)
@@ -26,15 +28,34 @@ class SetValueMapSubsystem implements ISetValueMapSubsystem
     }
 
     /**
-     * Set options with values
-     *
-     * @param ProcessOptions $options
-     *
-     * @return Subsystem
+     * Get available options
      */
-    public function setProcessOptions(ProcessOptions $options): Subsystem
+    public function getAvailableOptions(): SubsystemOptions
     {
-        $this->processOptions = $options;
+        return new SetValueMapOptions();
+    }
+
+    /**
+     * Process event data
+     */
+    public function process(EventData $eventData): EventData
+    {
+        $this->getValueMapperService()->put($this->getProcessOptions()->getOptions()['namespace'] ?? 'default', $eventData->get('key'), $eventData->get('value'));
+
+        return $eventData;
+    }
+
+    public function getValueMapperService(): ValueMapperService
+    {
+        return $this->valueMapperService;
+    }
+
+    /**
+     * @return $this
+     */
+    public function setValueMapperService(ValueMapperService $valueMapperService): self
+    {
+        $this->valueMapperService = $valueMapperService;
 
         return $this;
     }
@@ -45,45 +66,11 @@ class SetValueMapSubsystem implements ISetValueMapSubsystem
     }
 
     /**
-     * Get available options
-     *
-     * @return SubsystemOptions
+     * Set options with values
      */
-    public function getAvailableOptions(): SubsystemOptions
+    public function setProcessOptions(ProcessOptions $options): Subsystem
     {
-        return new SetValueMapOptions();
-    }
-
-    /**
-     * Process event data
-     *
-     * @param EventData $eventData
-     *
-     * @return EventData
-     */
-    public function process(EventData $eventData): EventData
-    {
-        $this->getValueMapperService()->put($this->getProcessOptions()->getOptions()['namespace'] ?? 'default', $eventData->get('key'), $eventData->get('value'));
-
-        return $eventData;
-    }
-
-    /**
-     * @return ValueMapperService
-     */
-    public function getValueMapperService(): ValueMapperService
-    {
-        return $this->valueMapperService;
-    }
-
-    /**
-     * @param ValueMapperService $valueMapperService
-     *
-     * @return $this
-     */
-    public function setValueMapperService(ValueMapperService $valueMapperService): self
-    {
-        $this->valueMapperService = $valueMapperService;
+        $this->processOptions = $options;
 
         return $this;
     }
